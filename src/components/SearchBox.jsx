@@ -26,7 +26,9 @@ const SearchBox = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch(`https://threads-app-oa3m.onrender.com/api/user/search?query=${search}`);
+        const response = await fetch(`https://threads-app-oa3m.onrender.com/api/user/search?query=${search}`,{
+          credentials: "include",
+        });
         const data = await response.json();
         if (data.error) {
           showTost("Error", data.error, "error");
@@ -51,7 +53,9 @@ const SearchBox = () => {
 
   const handleShowUser = async (user) => {
     try {
-      const response = await fetch(`https://threads-app-oa3m.onrender.com/api/user/profile/${user}`);
+      const response = await fetch(`https://threads-app-oa3m.onrender.com/api/user/profile/${user}`,{
+        credentials: "include",
+      });
       const data = await response.json();
       if (data.error) {
         showTost("Error", data.error, "error");

@@ -24,7 +24,9 @@ const PostPage = () => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const response = await fetch(`https://threads-app-oa3m.onrender.com/api/user/profile/${username}`);
+        const response = await fetch(`https://threads-app-oa3m.onrender.com/api/user/profile/${username}`,{
+          credentials: "include",
+        });
         const data = await response.json();
         if (data.error) {
           showTost("Error", data.error, "error");
@@ -43,7 +45,9 @@ const PostPage = () => {
 
     const getPost = async () => {
       try {
-        const response = await fetch(`https://threads-app-oa3m.onrender.com/api/post/${pid}`);
+        const response = await fetch(`https://threads-app-oa3m.onrender.com/api/post/${pid}`,{
+          credentials: "include",
+        });
         const data = await response.json();
         if (data.error) {
           showTost("Error", data.error, "error");

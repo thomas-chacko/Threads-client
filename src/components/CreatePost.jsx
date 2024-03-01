@@ -59,6 +59,7 @@ const CreatePost = () => {
           text: postText,
           image: imageUrl,
         }),
+        credentials: "include",
       });
       const data = await response.json();
       if (data.error) {

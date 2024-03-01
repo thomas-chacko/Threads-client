@@ -46,6 +46,7 @@ const Signup = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(inputs),
+        credentials: "include",
       });
       const data = await response.json();
       if (data.error) {

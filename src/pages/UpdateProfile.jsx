@@ -42,6 +42,7 @@ const UpdateProfile = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ ...inputs, profilePicture: imageUrl }),
+        credentials: "include",
       });
       const data = await response.json();
       if (data.error) {

@@ -18,7 +18,12 @@ const Post = ({ post, userid }) => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const response = await fetch("https://threads-app-oa3m.onrender.com/api/user/profile/" + userid);
+        const response = await fetch(
+          "https://threads-app-oa3m.onrender.com/api/user/profile/" + userid,
+          {
+            credentials: "include",
+          }
+        );
         const data = await response.json();
         if (data.error) {
           showTost("Error", data.error, "error");
@@ -37,12 +42,16 @@ const Post = ({ post, userid }) => {
     try {
       const conform = window.confirm("Are you sure?");
       if (!conform) return;
-      const response = await fetch(`https://threads-app-oa3m.onrender.com/api/post/${post._id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `https://threads-app-oa3m.onrender.com/api/post/${post._id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
       const data = await response.json();
       if (data.error) {
         showTost("Error", data.error, "error");
