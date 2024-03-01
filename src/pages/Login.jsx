@@ -36,13 +36,17 @@ const Login = () => {
     setLoading(true);
     e.preventDefault();
     try {
-      const response = await fetch("https://threads-app-oa3m.onrender.com/api/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(inputs),
-      });
+      const response = await fetch(
+        "https://threads-app-oa3m.onrender.com/api/user/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(inputs),
+          credentials: "include",
+        }
+      );
       const data = await response.json();
       if (data.error) {
         showTost("Error", data.error, "error");
