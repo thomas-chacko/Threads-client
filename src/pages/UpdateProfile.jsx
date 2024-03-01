@@ -36,7 +36,7 @@ const UpdateProfile = () => {
     if (updating) return;
     setUpdating(true);
     try {
-      const response = await fetch(`/api/user/update/${user._id}`, {
+      const response = await fetch(`https://threads-app-oa3m.onrender.com/api/user/update/${user._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -28,7 +28,7 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch("/api/user/logout", {
+      const response = await fetch("https://threads-app-oa3m.onrender.com/api/user/logout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

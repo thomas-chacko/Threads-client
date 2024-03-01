@@ -43,7 +43,7 @@ const UserHeader = ({ user }) => {
     if (updating) return;
     setUpdating(true);
     try {
-      const response = await fetch(`/api/user/follow/${user._id}`, {
+      const response = await fetch(`https://threads-app-oa3m.onrender.com/api/user/follow/${user._id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

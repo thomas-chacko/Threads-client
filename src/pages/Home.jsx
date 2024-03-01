@@ -13,7 +13,7 @@ const Home = () => {
     const getHomePosts = async () => {
       setLoading(true);
       try {
-        const response = await fetch("/api/feedpost");
+        const response = await fetch("https://threads-app-oa3m.onrender.com/api/feedpost");
         const data = await response.json();
         if (data.error) {
           showTost("Error", data.error, "error");

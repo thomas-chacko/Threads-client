@@ -49,7 +49,7 @@ const CreatePost = () => {
         showTost("Error", "The Character Must be lessthan 500", "error");
         return;
       }
-      const response = await fetch("/api/post/create", {
+      const response = await fetch("https://threads-app-oa3m.onrender.com/api/post/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

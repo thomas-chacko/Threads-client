@@ -37,7 +37,7 @@ const Action = ({ post: post_ }) => {
     if (liking) return;
     setLiking(true);
     try {
-      const response = await fetch(`/api/post/like/${post._id}`, {
+      const response = await fetch(`https://threads-app-oa3m.onrender.com/api/post/like/${post._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +68,7 @@ const Action = ({ post: post_ }) => {
       return;
     }
     try {
-      const response = await fetch(`/api/post/reply/${post._id}`, {
+      const response = await fetch(`https://threads-app-oa3m.onrender.com/api/post/reply/${post._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
