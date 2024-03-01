@@ -13,6 +13,7 @@ import { useSetRecoilState } from "recoil";
 import authAtom from "../atoms/authAtom";
 import useShowToast from "../hooks/useShowToast";
 import userAtom from "../atoms/userAtom";
+import { baseUrl } from "../baseUrl";
 
 const Login = () => {
   const showTost = useShowToast();
@@ -36,17 +37,14 @@ const Login = () => {
     setLoading(true);
     e.preventDefault();
     try {
-      const response = await fetch(
-        "https://threads-app-oa3m.onrender.com/api/user/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(inputs),
-          credentials: "include",
-        }
-      );
+      const response = await fetch(`${baseUrl}/api/user/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inputs),
+        credentials: "include",
+      });
       const data = await response.json();
       if (data.error) {
         showTost("Error", data.error, "error");

@@ -19,6 +19,7 @@ import userAtom from "../atoms/userAtom";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import useShowToast from "../hooks/useShowToast";
+import { baseUrl } from "../baseUrl";
 
 const UserHeader = ({ user }) => {
   const currentUser = useRecoilValue(userAtom);
@@ -43,7 +44,7 @@ const UserHeader = ({ user }) => {
     if (updating) return;
     setUpdating(true);
     try {
-      const response = await fetch(`https://threads-app-oa3m.onrender.com/api/user/follow/${user._id}`, {
+      const response = await fetch(`${baseUrl}/api/user/follow/${user._id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -71,7 +72,6 @@ const UserHeader = ({ user }) => {
 
   return (
     <VStack gap={4} alignItems={"start"}>
-      {/* name and photos */}
       <Flex justifyContent={"space-between"} alignItems={"center"} w={"full"}>
         <Box>
           <Text fontSize={"2xl"} fontWeight={"bold"}>

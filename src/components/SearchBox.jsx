@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import useShowToast from "../hooks/useShowToast";
 import { useNavigate } from "react-router-dom";
+import { baseUrl } from "../baseUrl";
 
 const SearchBox = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -26,7 +27,7 @@ const SearchBox = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch(`https://threads-app-oa3m.onrender.com/api/user/search?query=${search}`,{
+        const response = await fetch(`${baseUrl}/api/user/search?query=${search}`,{
           credentials: "include",
         });
         const data = await response.json();
@@ -53,7 +54,7 @@ const SearchBox = () => {
 
   const handleShowUser = async (user) => {
     try {
-      const response = await fetch(`https://threads-app-oa3m.onrender.com/api/user/profile/${user}`,{
+      const response = await fetch(`${baseUrl}/api/user/profile/${user}`,{
         credentials: "include",
       });
       const data = await response.json();
@@ -71,7 +72,6 @@ const SearchBox = () => {
   return (
     <>
       <FaSearch size={25} cursor={"pointer"} onClick={onOpen} />
-
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
         <ModalContent>

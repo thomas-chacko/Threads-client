@@ -3,6 +3,7 @@ import UserHeader from "../components/UserHeader";
 import { useParams } from "react-router-dom";
 import useShowToast from "../hooks/useShowToast";
 import Post from "../components/Post";
+import { baseUrl } from "../baseUrl";
 
 const UserPage = () => {
   const [user, setUser] = useState(null);
@@ -13,9 +14,12 @@ const UserPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://threads-app-oa3m.onrender.com/api/user/profile/${username}`,{
-          credentials: "include",
-        });
+        const response = await fetch(
+          `${baseUrl}/api/user/profile/${username}`,
+          {
+            credentials: "include",
+          }
+        );
         const data = await response.json();
         if (data.error) {
           showTost("Error", data.error, "error");
@@ -30,7 +34,7 @@ const UserPage = () => {
 
     const getPost = async () => {
       try {
-        const response = await fetch(`https://threads-app-oa3m.onrender.com/api/userpost/${username}`,{
+        const response = await fetch(`${baseUrl}/api/userpost/${username}`, {
           credentials: "include",
         });
         const data = await response.json();

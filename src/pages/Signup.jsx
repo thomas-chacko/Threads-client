@@ -13,6 +13,7 @@ import { useSetRecoilState } from "recoil";
 import authAtom from "../atoms/authAtom";
 import useShowToast from "../hooks/useShowToast";
 import userAtom from "../atoms/userAtom";
+import { baseUrl } from "../baseUrl";
 
 const Signup = () => {
   const showTost = useShowToast();
@@ -35,12 +36,11 @@ const Signup = () => {
 
   const [loading, setLoading] = useState(false);
 
-  // submit the form and send the data to the server
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
     try {
-      const response = await fetch("https://threads-app-oa3m.onrender.com/api/user/signup", {
+      const response = await fetch(`${baseUrl}/api/user/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

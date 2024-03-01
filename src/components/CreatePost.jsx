@@ -23,6 +23,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import useShowToast from "../hooks/useShowToast";
 import { useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
+import { baseUrl } from "../baseUrl";
 
 const CreatePost = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -49,7 +50,7 @@ const CreatePost = () => {
         showTost("Error", "The Character Must be lessthan 500", "error");
         return;
       }
-      const response = await fetch("https://threads-app-oa3m.onrender.com/api/post/create", {
+      const response = await fetch(`${baseUrl}/api/post/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

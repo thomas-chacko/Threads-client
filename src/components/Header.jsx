@@ -18,7 +18,7 @@ import { FaUser } from "react-icons/fa6";
 import { FiLogOut } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import SearchBox from "./SearchBox";
-
+import { baseUrl } from "../baseUrl";
 
 const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -28,7 +28,7 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch("https://threads-app-oa3m.onrender.com/api/user/logout", {
+      const response = await fetch(`${baseUrl}/api/user/logout`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

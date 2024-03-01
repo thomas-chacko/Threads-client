@@ -7,4 +7,5 @@ const AuthPage = () => {
   const authState = useRecoilValue(authAtom);
   return <>{authState === "login" ? <Login /> : <Signup />}</>;
 };
+
 export default AuthPage;

@@ -3,6 +3,7 @@ import useShowToast from "../hooks/useShowToast";
 import Loading from "../components/Loading";
 import { Text } from "@chakra-ui/react";
 import Post from "../components/Post";
+import { baseUrl } from "../baseUrl";
 
 const Home = () => {
   const showTost = useShowToast();
@@ -13,7 +14,7 @@ const Home = () => {
     const getHomePosts = async () => {
       setLoading(true);
       try {
-        const response = await fetch("https://threads-app-oa3m.onrender.com/api/feedpost",{
+        const response = await fetch(`${baseUrl}/api/feedpost`, {
           credentials: "include",
         });
         const data = await response.json();
